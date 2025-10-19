@@ -3,172 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MapaNote - A powerful desktop app for organizing geographic notes and knowledge">
-    <title>MapaNote - Learn Geography Your Way</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
-</head>
-<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white min-h-screen">
+    <title>MapaNote</title>
+
+     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' font-family='Courier New, monospace' font-weight='bold'>M</text></svg>">
     
-    <!-- Navigation -->
-    <nav class="bg-gray-900/50 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <span class="text-3xl">🗺️</span>
-                <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    MapaNote
-                </h1>
-            </div>
-            <div class="flex gap-6">
-                <a href="#features" class="hover:text-blue-400 transition">Features</a>
-                <a href="#download" class="hover:text-blue-400 transition">Download</a>
-                <a href="https://github.com/yourusername/mapanote" target="_blank" class="hover:text-blue-400 transition flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-            </div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .hero-cta {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #000;
+            color: #fff;
+            border: 3px solid #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .downloads {
+            margin: 30px 0;
+            border: 2px solid #000;
+            padding: 20px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid #000;
+            margin: 10px 0;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .download-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .demo {
+            margin: 30px 0;
+            border: 2px solid #000;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .demo img,
+        .demo video {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #000;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 2px solid #000;
+            font-size: 14px;
+        }
+
+        .note {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .highlight-box {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin: 30px 0;
+            border: 2px solid #000;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .highlight-box li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .highlight-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-box {
+            border: 2px solid #000;
+            padding: 15px;
+        }
+
+        .feature-box strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .coming-soon {
+            background: #f5f5f5;
+            border: 2px solid #000;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+    .downloads > div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <h1>MAPANOTE</h1>
+    <p><strong>A desktop app for organizing geographic notes.</strong></p>
+    
+    <div class="note">
+        ⚠️ Early alpha. Windows only for now. Expect bugs. Your feedback is appreciated.
+    </div>
+
+    <!-- HERO DOWNLOAD BUTTON -->
+    <div class="hero-cta">
+        <a href="#download" class="cta-button">⬇ DOWNLOAD MAPANOTE</a>
+        <p style="margin-top: 10px; font-size: 14px;">Windows 10/11 • 3.5MB • Free Forever</p>
+    </div>
+
+    <div class="highlight-box">
+        <ul>
+            <li>100% FREE - No subscriptions, no paywalls, no "premium" tier</li>
+            <li>NO ACCOUNT REQUIRED - Download and start using immediately</li>
+            <li>WORKS OFFLINE - No internet connection needed after download</li>
+            <li>YOUR DATA STAYS LOCAL - Everything stored on your machine</li>
+            <li>OPEN SOURCE - View, modify, and contribute to the code</li>
+            <li>NO TRACKING - Zero analytics, zero telemetry, zero data collection</li>
+        </ul>
+    </div>
+
+    <h2>What is this?</h2>
+    <p>MapaNote helps you organize notes and research by country and topic. Built for students, researchers, and anyone learning about world geography.</p>
+    
+    <p>All your notes are stored locally in plain files on your computer. No cloud sync, no servers, no accounts. Your data belongs to you.</p>
+
+    <h2>Features</h2>
+    
+    <div class="features-grid">
+        <div class="feature-box">
+            <strong>📝 Markdown Support</strong>
+            <p>Write with full markdown formatting, code blocks, and inline styles.</p>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <main class="container mx-auto px-4">
-        <section class="text-center py-20 md:py-32">
-            <div class="mb-6">
-                <span class="text-7xl md:text-9xl">🗺️</span>
-            </div>
-            <h2 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Learn Geography Your Way
-            </h2>
-            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-                A powerful desktop app for organizing geographic notes, topics, and knowledge. 
-                Keep all your research in one beautiful, local-first application.
-            </p>
-            
-            <div id="download" class="flex flex-wrap gap-4 justify-center mb-8">
-                <a href="https://github.com/yourusername/mapanote/releases/latest/download/mapanote-windows.exe" 
-                   class="download-btn bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg font-semibold text-lg transition transform hover:scale-105 flex items-center gap-2 shadow-lg">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
-                    </svg>
-                    Windows
-                </a>
-                <a href="https://github.com/yourusername/mapanote/releases/latest/download/mapanote-mac.dmg" 
-                   class="download-btn bg-gray-700 hover:bg-gray-600 px-8 py-4 rounded-lg font-semibold text-lg transition transform hover:scale-105 flex items-center gap-2 shadow-lg">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-                    </svg>
-                    macOS
-                </a>
-                <a href="https://github.com/yourusername/mapanote/releases/latest/download/mapanote-linux.AppImage" 
-                   class="download-btn bg-purple-600 hover:bg-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition transform hover:scale-105 flex items-center gap-2 shadow-lg">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.84-.41 1.719-.287 2.604.214 1.477.896 2.78 1.815 3.797 1.256 1.44 2.95 2.177 4.463 2.177 1.87 0 3.683-1.177 4.588-2.335 1.108-1.44 1.869-3.346 2.053-5.073.184-1.726-.142-3.627-1.013-5.255-.871-1.628-2.293-2.803-3.917-3.177-.8-.184-1.514-.184-1.982-.184zm.568 1.02c.184 0 .43 0 .78.061 1.226.276 2.345 1.226 3.033 2.553.688 1.327.96 2.988.803 4.514-.157 1.526-.825 3.226-1.726 4.391-.688.884-1.92 1.84-3.33 1.84-1.226 0-2.543-.596-3.554-1.78-.688-.817-1.226-1.9-1.38-3.033-.092-.688-.03-1.38.184-2.053.427-1.38 1.38-2.78 2.127-3.627.626-.71.826-1.38.887-2.207.061-1.226-.611-4.514 2.176-4.66z"/>
-                    </svg>
-                    Linux
-                </a>
-            </div>
-
-            <p class="text-sm text-gray-400">
-                Free and Open Source • Available for Windows, macOS, and Linux
-            </p>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="py-20">
-            <h3 class="text-3xl md:text-4xl font-bold text-center mb-16">
-                Everything You Need to Organize Geographic Knowledge
-            </h3>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">📝</div>
-                    <h4 class="text-xl font-bold mb-3">Rich Markdown Notes</h4>
-                    <p class="text-gray-300">
-                        Write detailed notes with full markdown support, code highlighting, and image embedding. 
-                        Format your research exactly how you want it.
-                    </p>
-                </div>
-
-                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-purple-500 transition">
-                    <div class="text-4xl mb-4">🗺️</div>
-                    <h4 class="text-xl font-bold mb-3">Country-Focused Organization</h4>
-                    <p class="text-gray-300">
-                        Organize notes by country and topic. Perfect for students, researchers, 
-                        or anyone learning about world geography and cultures.
-                    </p>
-                </div>
-
-                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-pink-500 transition">
-                    <div class="text-4xl mb-4">🔒</div>
-                    <h4 class="text-xl font-bold mb-3">Private & Local-First</h4>
-                    <p class="text-gray-300">
-                        All your data stays on your device. No cloud sync, no tracking, 
-                        no subscriptions. Your notes belong to you.
-                    </p>
-                </div>
-
-                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-green-500 transition">
-                    <div class="text-4xl mb-4">🖼️</div>
-                    <h4 class="text-xl font-bold mb-3">Image Support</h4>
-                    <p class="text-gray-300">
-                        Embed images directly in your notes with drag-and-drop or paste. 
-                        Perfect for maps, flags, and visual references.
-                    </p>
-                </div>
-
-                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-yellow-500 transition">
-                    <div class="text-4xl mb-4">🏷️</div>
-                    <h4 class="text-xl font-bold mb-3">Smart Tagging</h4>
-                    <p class="text-gray-300">
-                        Tag your notes for easy filtering and discovery. 
-                        Find what you need when you need it.
-                    </p>
-                </div>
-
-                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-red-500 transition">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h4 class="text-xl font-bold mb-3">Fast & Lightweight</h4>
-                    <p class="text-gray-300">
-                        Built with Rust and Tauri for blazing-fast performance 
-                        with minimal resource usage.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Open Source Section -->
-        <section class="py-20 text-center">
-            <div class="max-w-4xl mx-auto bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm p-12 rounded-2xl border border-blue-700">
-                <h3 class="text-3xl font-bold mb-4">Open Source & Community Driven</h3>
-                <p class="text-xl text-gray-300 mb-8">
-                    MapaNote is free and open source. Check out the code, contribute features, 
-                    report bugs, or fork it for your own projects.
-                </p>
-                <a href="https://github.com/yourusername/mapanote" 
-                   target="_blank"
-                   class="inline-flex items-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition transform hover:scale-105">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    View on GitHub
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900/50 backdrop-blur-sm border-t border-gray-800 mt-20 py-8">
-        <div class="container mx-auto px-4 text-center text-gray-400">
-            <p class="mb-2">&copy; 2025 MapaNote. Open Source Software.</p>
-            <p class="text-sm">
-                Built with ❤️ using Rust, Tauri, and Svelte
-            </p>
+        
+        <div class="feature-box">
+            <strong>🗺️ Country Organization</strong>
+            <p>Group notes by country and topic for easy navigation.</p>
         </div>
+        
+        <div class="feature-box">
+            <strong>🖼️ Image Embedding</strong>
+            <p>Add images directly to your notes with drag-and-drop or paste.</p>
+        </div>
+        
+        <div class="feature-box">
+            <strong>🏷️ Smart Tagging</strong>
+            <p>Tag notes for filtering and cross-referencing.</p>
+        </div>
+        
+        <div class="feature-box">
+            <strong>💾 Local Storage</strong>
+            <p>All data stored in a local vault on your machine. No cloud required.</p>
+        </div>
+        
+        <div class="feature-box">
+            <strong>⚡ Fast & Lightweight</strong>
+            <p>Built with Rust and Tauri for minimal resource usage.</p>
+        </div>
+    </div>
+
+    <h2>Privacy & Data</h2>
+    <ul>
+        <li><strong>No internet required:</strong> Works completely offline after initial download</li>
+        <li><strong>No accounts:</strong> No sign-up, no login, no passwords to remember</li>
+        <li><strong>No tracking:</strong> Zero analytics, cookies, or telemetry</li>
+        <li><strong>Local-first:</strong> Your notes live in a folder on your computer</li>
+        <li><strong>Portable:</strong> Back up your vault folder and move it anywhere</li>
+        <li><strong>Open source:</strong> Verify for yourself - the code is public</li>
+    </ul>
+
+<h2 id="download">Download</h2>
+<div class="downloads">
+    <p><strong>Current version: Alpha v0.1.0</strong></p>
+    <p style="margin-bottom: 25px;">Free forever. No registration needed.</p>
+    
+    <!-- Download Options Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+        
+        <!-- EXE Option (Recommended) -->
+        <div style="border: 3px solid #000; padding: 20px; position: relative;">
+            <div style="position: absolute; top: -12px; right: 10px; background: #000; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; letter-spacing: 1px;">
+                RECOMMENDED
+            </div>
+            <div style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">
+                Setup.exe
+            </div>
+            <div style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                Easy installer for most users
+            </div>
+            <a href="downloads/Mapanote-0.1.0-setup.exe" 
+               class="download-btn" 
+               download
+               style="width: 100%; text-align: center; padding: 12px; display: block;">
+                ⬇ Download (3.4MB)
+            </a>
+        </div>
+
+        <!-- MSI Option -->
+        <div style="border: 2px solid #000; padding: 20px;">
+            <div style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">
+                Installer.msi
+            </div>
+            <div style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                For IT/enterprise deployment
+            </div>
+            <a href="downloads/Mapanote-0.1.0.msi" 
+               class="download-btn" 
+               download
+               style="width: 100%; text-align: center; padding: 12px; display: block;">
+                ⬇ Download (4.5MB)
+            </a>
+        </div>
+    </div>
+
+    <!-- Installation Note -->
+    <div style="background: #f5f5f5; border: 2px solid #000; padding: 15px; margin-top: 20px; font-size: 14px;">
+        <strong>📋 Installation:</strong> Download → Run → Start using immediately
+        <br>No account, no internet connection, no configuration needed.
+    </div>
+    
+    <div class="coming-soon">
+        <strong>Coming soon:</strong> macOS and Linux builds<br>
+        Want to help? <a href="https://github.com/conpans/mapanote">Contribute on GitHub</a>
+    </div>
+</div>
+
+    <!-- ADD DEMO SECTION WHEN READY -->
+    <!--
+    <h2>Demo</h2>
+    <div class="demo">
+        <p>Quick walkthrough:</p>
+        <img src="demo.gif" alt="MapaNote demo">
+        or use video: -->
+        <!-- <video controls>
+            <source src="demo.mp4" type="video/mp4">
+        </video> -->
+    </div>
+   
+
+<h2>System Requirements</h2>
+<ul>
+    <li><strong>OS:</strong> Windows 10 or later (64-bit)</li>
+    <li><strong>Download size:</strong> 3.5MB (installer)</li>
+    <li><strong>Installed size:</strong> ~10MB</li>
+    <li><strong>RAM:</strong> ~50-100MB while running</li>
+    <li><strong>Storage:</strong> Minimal + space for your notes and images</li>
+</ul>
+
+    <h2>Source Code</h2>
+    <p>MapaNote is free and open source software. Licensed under MIT - use it however you want.</p>
+    <p><a href="https://github.com/conpans/mapanote" target="_blank">View on GitHub →</a></p>
+    <p>Found a bug? Have a feature request? <a href="https://github.com/conpans/mapanote/issues" target="_blank">Open an issue →</a></p>
+
+    <h2>FAQ</h2>
+    <p><strong>Q: Is this really free?</strong><br>
+    A: Yes. No paid tiers, no "premium" features, no upsells. Free forever.</p>
+
+    <p><strong>Q: Do I need to create an account?</strong><br>
+    A: No. Download and start using immediately.</p>
+
+    <p><strong>Q: Does it work offline?</strong><br>
+    A: Yes. No internet connection needed after initial download.</p>
+
+    <p><strong>Q: Where is my data stored?</strong><br>
+    A: In a local folder on your computer.</p>
+
+    <p><strong>Q: Will my notes sync across devices?</strong><br>
+    A: Not automatically. Your notes are stored locally.</p>
+
+    <p><strong>Q: Is this safe to use?</strong><br>
+    A: The code is open source - you can verify it yourself. The app doesn't connect to the internet or send any data anywhere.</p>
+
+    <p><strong>Q: What about Mac and Linux?</strong><br>
+    A: Coming soon! This is an early alpha focused on Windows first. Check out the GitHub repo.</p>
+
+    <footer>
+        <p>Built with Rust + Tauri + Svelte</p>
+        <p>© 2025 MapaNote • Open source software • <a href="https://github.com/conpans/mapanote/blob/main/LICENSE">MIT License</a></p>
     </footer>
 
-    <!-- Cloudflare Analytics - ADD YOUR TOKEN HERE AFTER SETUP -->
+    <!-- Cloudflare Analytics - ADD YOUR TOKEN AFTER SETUP -->
     <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script> -->
 
 </body>
